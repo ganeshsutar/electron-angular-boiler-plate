@@ -1,0 +1,200 @@
+@import '~@angular/material/theming';
+
+@mixin app-component-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, accent);
+    $foreground: map-get($theme, foreground);
+    $background: map-get($theme, background);
+
+    .app {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        background-color: mat-color($background, background);
+        color: mat-color($foreground, base);
+        z-index: -2;
+        user-select: none;
+
+        .spacer {
+            flex-grow: 1;
+        }
+
+        .mat-toolbar {
+            z-index: 10;
+        }
+
+        .mat-toolbar-row, .mat-toolbar-single-row {
+            height: 50px;
+        }
+
+        .fas {
+            display: inline-block;
+            padding: 0px 10px;
+            font-size: 1.5em;
+            vertical-align: middle;
+            line-height: 24px;
+        }
+
+        .sidenav-container {
+            position: absolute;
+            top: 50px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            z-index: -1;
+
+            .sidenav-list {
+                min-width: 300px;
+            }
+        }
+
+        .mat-sidenav-content {
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .app-content {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            background-color: mat-color($background, background);
+            color: mat-color($foreground, base);
+            display: flex;
+            flex-direction: row;
+            overflow: hidden;
+            overflow-y: auto;
+
+            .app-content-sidebar {
+                width: 300px;
+                overflow: hidden;
+                overflow-y: auto;
+                z-index: 1;
+
+                .mat-list-icon {
+                    &.active {
+                        background-color: mat-color($primary, A400);
+                        color: mat-color($primary, A400-contrast);
+                    }
+
+                }
+
+                .mat-list-item {
+                    p.mat-line {
+                        margin-top: 5px;
+                        font-size: 0.8em;
+                    }
+
+                    &:hover {
+                        background-color: mat-color($primary, A200);
+                        color: mat-color($primary, A200-contrast);
+                        @include mat-elevation(8);
+                    }
+
+                    &.active {
+                        background-color: mat-color($primary, A400);
+                        color: mat-color($primary, A400-contrast);
+                    }
+                }
+            }
+
+            .app-main-content {
+                flex: 1 1 auto;
+                display: flex;
+                flex-direction: column;
+                flex-basis: 10px;
+                overflow: hidden;
+                overflow-y: auto;
+                z-index: 1;
+
+                .content-header {
+                    font-family: Montserrat;
+                    font-size: 2em;
+                    font-weight: 600;
+                    padding: 10px 0px;
+                }
+
+                .mat-card {
+                    margin: 10px;
+                }
+
+                .full-width {
+                    width: 100%;
+                }
+            }
+
+            
+        }
+
+        // app - scrollbars
+
+        ::-webkit-scrollbar {
+            height: 12px;
+            width: 12px;
+            background: mat-color($background, background);
+            overflow: visible;
+        }
+        ::-webkit-scrollbar-corner {
+            display: none;
+            background: mat-color($background, background);
+        }
+
+        ::-webkit-scrollbar-button {
+            display: none;
+            height:0;
+            width: 0;
+        }
+
+        ::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment             {
+            display: block;
+        }
+
+        ::-webkit-scrollbar-button:vertical:start:increment,::-webkit-scrollbar-button:vertical:end:decrement {
+            display: none;
+        }
+
+        ::-webkit-scrollbar-track {
+            -moz-background-clip: border;
+            -webkit-background-clip: border;
+            background-clip: padding-box;
+            background-color: mat-color($background, app-bar);
+        }
+
+        ::-webkit-scrollbar-track:vertical, ::-webkit-scrollbar-track:horizontal {
+            border-left-width: 0;
+            border-right-width: 0;
+        }
+
+        ::-webkit-scrollbar-track:vertical,::-webkit-scrollbar-track:horizontal,::-webkit-scrollbar-thumb:vertical,::-webkit-scrollbar-thumb:horizontal,::-webkit-scrollbar-track:vertical,::-webkit-scrollbar-track:horizontal,::-webkit-scrollbar-thumb:vertical,::-webkit-scrollbar-thumb:horizontal {
+            border-style: solid;
+            border-color: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            -webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07);
+            background-clip: padding-box;
+            background-color: rgba(0,0,0,.2);
+            min-height: 28px;
+            padding-top: 100px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            -webkit-box-shadow: inset 1px 1px 1px rgba(0,0,0,.25);
+            background-color: rgba(0,0,0,.4);
+        }
+
+        ::-webkit-scrollbar-thumb:active {
+            -webkit-box-shadow: inset 1px 1px 3px rgba(0,0,0,.35);
+            background-color: rgba(0,0,0,.5);
+        }
+
+        ::-webkit-scrollbar-thumb:vertical, ::-webkit-scrollbar-thumb:horizontal {
+            border-width: 0;
+            border-left-width: 0;
+            border-right-width: 0;
+        }
+    }
+}

@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+@import '~material-design-icons/iconfont/material-icons.css';
+@import "~typeface-montserrat/index.css";
+@import "~typeface-lato/index.css";
+@import "~typeface-source-sans-pro/index.css";
+@import "~typeface-roboto/index.css";
+
+@import 'themes/dark-theme.scss';
+@import 'themes/light-theme.scss';
+
+$custom-typography: mat-typography-config(
+    $font-family: 'Source Sans Pro, sans-serif'
+);
+@include mat-core($custom-typography);
+
+@import 'app/app.component.scss';
+
+@mixin app-theme($theme) {
+    @include angular-material-theme($theme);
+    
+    @include app-component-theme($theme);
+}
+
+.light-theme {
+    @include app-theme($light-theme);
+}
+
+.dark-theme {
+    @include app-theme($dark-theme);
+}
+
+// Global Styles
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+body * {
+    text-rendering: geometricPrecision;
+}
